@@ -7,12 +7,9 @@
     <link rel="icon" href="https://regu7.github.io/assets/images/code-programing-symbol-svgrepo-com.svg" type="image/svg+xml">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Import Roboto font */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
-        /* Import Inter font for general text */
+        /* Import Inter font */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-        /* Apply Roboto for headings and Inter for body */
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
@@ -77,10 +74,11 @@
             top: 0.1em;
         }
 
+        /* --- Updated Skill Styles with Hover Effects --- */
         .skill-category-h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            color: #9CB58A;
+            color: #f7f8f6;
             margin-bottom: 0.75rem;
             text-align: center;
         }
@@ -101,16 +99,32 @@
             font-size: 0.875rem;
             font-weight: 500;
             color: #E2E8F0;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
+            border: 1px solid transparent;
+            cursor: default;
         }
-        .skill-grid li:hover { background-color: #3A3A3A; }
+        
+        /* Interactive Hover State */
+        .skill-grid li:hover { 
+            background-color: #333333; 
+            transform: translateY(-5px) scale(1.02);
+            border-color: #fcfcfc;
+            color: #ffffff;
+            box-shadow: 0 10px 20px -5px rgba(204, 255, 0, 0.3);
+        }
+        
         .skill-grid img, .skill-grid svg {
             width: 1.25rem;
             height: 1.25rem;
             margin-right: 0.5rem;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-grid li:hover img {
+            transform: scale(1.1);
         }
 
         .certification-item {
@@ -220,7 +234,7 @@
             </div>
 
             <div class="shrink-0 lg:w-2/5 flex flex-col items-center">
-                <img src="./assets/images/Profile_picture.jpg" alt="Saratha Devi Lakshmanan Doss" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover">
+                <img src="https://raw.githubusercontent.com/Saratha1999/saratha1999.github.io/main/assets/images/Profile_picture.jpg" alt="Saratha Devi Lakshmanan Doss" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover">
                 <div class="flex flex-col items-center space-y-4 mt-8 w-full max-w-[200px]">
                     <div class="bg-[#000000] p-4 rounded-lg text-center w-full shadow-md">
                         <p class="text-3xl font-bold text-[#CCFF00]">4+</p>
@@ -411,28 +425,13 @@
                         <h3 class="skill-category-h3">Tools & Other Tech</h3>
                         <ul class="skill-grid">
                             <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git"> Git</li>
-                            <li>
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" alt="Jira"> 
-                                Jira
-                            </li>
-                            <li>
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg" alt="Confluence"> 
-                                Confluence
-                            </li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg" alt="Jira"> Jira</li>
+                            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg" alt="Confluence"> Confluence</li>
                             <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg" alt="REST APIs"> RESTful APIs</li>
                             <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux"> Linux</li>
-                            <li>
-                                <img src="https://cdn-icons-png.flaticon.com/512/2885/2885417.png" alt="Networking" style="width:20px; height:20px;"> 
-                                Networking (TCP/IP, UDP)
-                            </li>
-                            <li>
-                                <img src="https://cdn-icons-png.flaticon.com/512/4544/4544503.png" alt="Agile" style="width:20px; height:20px;"> 
-                                Agile
-                            </li>
-                            <li>
-                                <img src="https://cdn-icons-png.flaticon.com/512/2463/2463456.png" alt="SDLC" style="width:20px; height:20px;"> 
-                                SDLC
-                            </li>
+                            <li><img src="https://cdn-icons-png.flaticon.com/512/2885/2885417.png" alt="Networking"> Networking (TCP/IP, UDP)</li>
+                            <li><img src="https://cdn-icons-png.flaticon.com/512/4544/4544503.png" alt="Agile"> Agile</li>
+                            <li><img src="https://cdn-icons-png.flaticon.com/512/2463/2463456.png" alt="SDLC"> SDLC</li>
                         </ul>
                     </div>
                 </div>
@@ -558,25 +557,13 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
-
-            const initialSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
-            if (initialSection) {
-                let currentSection = initialSection.closest('section[id]');
-                if (currentSection) {
-                    const activeLink = document.querySelector(`.navbar-link[href="#${currentSection.id}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-            }
         });
 
         // Typing animation for the quote
         const quoteText = "Automate all the things!";
         const typingElement = document.getElementById('typing-text');
-        let i = 0;
-        let isDeleting = false;
         let charIndex = 0;
+        let isDeleting = false;
         const typingSpeed = 100;
         const deletingSpeed = 50;
         const delayBetweenQuotes = 1500;
