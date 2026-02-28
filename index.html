@@ -500,6 +500,24 @@
                         <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.165 6.839 9.48.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.34-3.369-1.34-.455-1.157-1.11-1.465-1.11-1.465-.908-.618.069-.606.069-.606 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.089 2.91.832.092-.647.35-1.089.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.09.39-1.984 1.029-2.683-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.006 9.006 0 0112 5.042c.85.004 1.705.115 2.504.337 1.909-1.295 2.747-1.025 2.747-1.025.546 1.378.202 2.397.098 2.65.64.699 1.029 1.593 1.029 2.683 0 3.84-2.339 4.687-4.566 4.935.359.308.678.915.678 1.846 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.483C21.137 20.163 24 16.417 24 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" />
                     </svg>
                 </a>
+
+                <a href="mailto:ldsarathadevi1999@gmail.com" 
+                   onclick="showEmailDialog(event)" 
+                   class="text-white hover:text-[#CCFF00] transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                
+                <div id="emailDialog" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div class="bg-[#1a1a1a] border border-[#CCFF00] p-6 rounded-lg shadow-xl text-center max-w-sm">
+                        <h3 class="text-[#CCFF00] font-bold mb-2">Contact Me</h3>
+                        <p class="text-white mb-4 select-all">ldsarathadevi1999@gmail.com</p>
+                        <button onclick="closeEmailDialog()" class="bg-[#CCFF00] text-black px-4 py-2 rounded font-semibold hover:bg-white transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
             </div>
             <p class="text-sm text-[#A0A0A0]">&copy; 2025 Saratha Devi Lakshmanan Doss. All Rights Reserved.</p>
         </div>
@@ -586,6 +604,27 @@
                 isDeleting = false;
                 setTimeout(typeWriter, typingSpeed);
             }
+        }
+
+        function showEmailDialog(event) {
+            // 1. Prevent the link from firing immediately
+            event.preventDefault();
+            const mailtoUrl = event.currentTarget.href;
+
+            // 2. Show the dialog box
+            const dialog = document.getElementById('emailDialog');
+            dialog.classList.remove('hidden');
+
+            // 3. Open the mail app after a slight delay (500ms)
+            // This ensures the user sees the dialog first
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+            }, 500);
+        }
+
+        function closeEmailDialog() {
+            const dialog = document.getElementById('emailDialog');
+            dialog.classList.add('hidden');
         }
 
         window.onload = typeWriter;
